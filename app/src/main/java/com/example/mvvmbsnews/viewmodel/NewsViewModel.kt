@@ -17,6 +17,9 @@ class NewsViewModel (val  newsRepository: NewsRepository) : ViewModel() {
 
     var breakingNewsPage = 1
 
+    init {
+        getBreakingNews("us")
+    }
 
     fun  getBreakingNews(countryCode :String) = viewModelScope.launch {
         breakingNews.postValue(Resource.Loading())

@@ -2,6 +2,7 @@ package com.example.mvvmbsnews.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -29,8 +30,6 @@ class NewsActivity : AppCompatActivity() {
 
         val providerFactory = NewsViewModelProviderFactory(newsRepository)
         viewModel = ViewModelProvider(this,providerFactory).get(NewsViewModel::class.java)
-
-
 
 
         navController = findNavController(R.id.newsNavHostFragment)
