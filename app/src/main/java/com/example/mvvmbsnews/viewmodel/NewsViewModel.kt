@@ -3,7 +3,6 @@ package com.example.mvvmbsnews.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.mvvmbsnews.api.RetrofitInstance
 import com.example.mvvmbsnews.model.NewsResponse
 import com.example.mvvmbsnews.repository.NewsRepository
 import com.example.mvvmbsnews.util.Resource
@@ -28,7 +27,7 @@ class NewsViewModel (val  newsRepository: NewsRepository) : ViewModel() {
         breakingNews.postValue(handleBreakingNewsResponse(response))
     }
 
-    private  fun  handleBreakingNewsResponse(response: Response<NewsResponse>) :Resource<NewsResponse>{
+    private fun handleBreakingNewsResponse(response: Response<NewsResponse>) :Resource<NewsResponse>{
 
         if (response.isSuccessful){
             response.body()?.let {result->

@@ -9,9 +9,7 @@ import com.example.mvvmbsnews.viewmodel.NewsViewModel
 
 class ArticleFragment : Fragment(R.layout.fragment_article) {
 
-    lateinit var  newsViewModel : NewsViewModel
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        newsViewModel = (activity as NewsActivity).viewModel
     }
 }

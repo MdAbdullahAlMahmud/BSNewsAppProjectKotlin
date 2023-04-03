@@ -11,14 +11,17 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mvvmbsnews.adapter.NewsAdapter
 import com.example.mvvmbsnews.databinding.FragmentBreakingNewsBinding
+import com.example.mvvmbsnews.db.ArticleDatabase
+import com.example.mvvmbsnews.repository.NewsRepository
+import com.example.mvvmbsnews.ui.NewsActivity
+import com.example.mvvmbsnews.ui.NewsViewModelProviderFactory
 import com.example.mvvmbsnews.util.Resource
 import com.example.mvvmbsnews.viewmodel.NewsViewModel
 
 
 class BreakingNewsFragment : Fragment() {
 
-
-    lateinit var  newsViewModel : NewsViewModel
+    lateinit var newsViewModel :NewsViewModel
     lateinit var newsAdapter: NewsAdapter
 
     lateinit var binding: FragmentBreakingNewsBinding
@@ -34,40 +37,42 @@ class BreakingNewsFragment : Fragment() {
         return  binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        newsViewModel = ViewModelProvider(requireActivity()).get(NewsViewModel::class.java)
-        newsViewModel.breakingNews.observe(viewLifecycleOwner, Observer {response->
-            when(response){
-
-                is  Resource.Success ->{
-                    hideLoading()
-                    response.data?.let {result->
-                        newsAdapter.differ.submitList(result.articles)
-                    }
-
-                }
-
-                is Resource.Error->{
-                    hideLoading()
-                    response.message?.let {message->
-
-                        Log.e(TAG,"An error occured $message")
-                    }
-                }
-
-                is  Resource.Loading->{
-                    showLoading()
-                }
-            }
-
-        })
-    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        newsViewModel = (activity as NewsActivity).viewModel
-        setupRecycleView()
 
+       setupRecycleView()
+
+
+        val newsRepository =  NewsRepository(ArticleDatabase(binding.root.context))
+        val providerFactory = NewsViewModelProviderFactory(newsRepository)
+
+        newsViewModel = ViewModelProvider(this,providerFactory).get(NewsViewModel::class.java)
+
+       newsViewModel.breakingNews.observe(viewLifecycleOwner, Observer {response->
+           when(response){
+
+               is  Resource.Success ->{
+                   hideLoading()
+                   response.data?.let {result->
+                       newsAdapter.differ.submitList(result.articles)
+                   }
+
+               }
+
+               is Resource.Error->{
+                   hideLoading()
+                   response.message?.let {message->
+
+                       Log.e(TAG,"An error occured $message")
+                   }
+               }
+
+               is  Resource.Loading->{
+                   showLoading()
+               }
+           }
+
+       })
 
     }
 

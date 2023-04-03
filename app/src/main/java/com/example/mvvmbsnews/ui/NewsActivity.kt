@@ -26,10 +26,6 @@ class NewsActivity : AppCompatActivity() {
         activityNewsBinding = ActivityNewsBinding.inflate(layoutInflater)
         setContentView(activityNewsBinding.root)
 
-        val newsRepository =  NewsRepository(ArticleDatabase(this))
-
-        val providerFactory = NewsViewModelProviderFactory(newsRepository)
-        viewModel = ViewModelProvider(this,providerFactory).get(NewsViewModel::class.java)
 
 
         navController = findNavController(R.id.newsNavHostFragment)
