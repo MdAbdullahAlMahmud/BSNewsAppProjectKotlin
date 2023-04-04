@@ -56,7 +56,7 @@ class ArticleFragment : Fragment() {
 
         binding.webView.apply {
             webViewClient = CustomWebClient(binding.webViewProgressBar)
-           loadUrl(article.url)
+            article.url?.let { loadUrl(it) }
 
         }
 
