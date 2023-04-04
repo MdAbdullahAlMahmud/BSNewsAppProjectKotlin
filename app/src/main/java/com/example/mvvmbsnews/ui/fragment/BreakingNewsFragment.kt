@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.mvvmbsnews.R
 import com.example.mvvmbsnews.adapter.NewsAdapter
 import com.example.mvvmbsnews.databinding.FragmentBreakingNewsBinding
 import com.example.mvvmbsnews.db.ArticleDatabase
@@ -73,6 +75,21 @@ class BreakingNewsFragment : Fragment() {
            }
 
        })
+
+
+
+        newsAdapter.setOnNewsItemClickListener {
+
+            val bundle = Bundle().apply {
+               // putSerializable("article",it)
+                putString("url",it.url)
+            }
+
+            Log.v(TAG, "Article Pojo ->  ${it.toString()}")
+            findNavController().navigate(R.id.action_breakingNewsFragment_to_articleFragment,bundle)
+
+        }
+
 
     }
 
