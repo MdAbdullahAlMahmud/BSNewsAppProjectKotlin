@@ -106,8 +106,7 @@ class SearchFragment : Fragment() {
         newsAdapter.setOnNewsItemClickListener {
 
             val bundle = Bundle().apply {
-                // putSerializable("article",it)
-                putString("url",it.url)
+                 putSerializable("article",it)
             }
 
             Log.v(TAG, "Article Pojo ->  ${it.toString()}")

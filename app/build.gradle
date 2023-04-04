@@ -5,6 +5,8 @@ plugins {
 
 }
 apply plugin: 'kotlin-kapt'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
+
 
 android {
     namespace 'com.example.mvvmbsnews'

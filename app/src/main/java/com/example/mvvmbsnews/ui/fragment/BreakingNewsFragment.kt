@@ -81,10 +81,8 @@ class BreakingNewsFragment : Fragment() {
         newsAdapter.setOnNewsItemClickListener {
 
             val bundle = Bundle().apply {
-               // putSerializable("article",it)
-                putString("url",it.url)
+                putSerializable("article",it)
             }
-
             Log.v(TAG, "Article Pojo ->  ${it.toString()}")
             findNavController().navigate(R.id.action_breakingNewsFragment_to_articleFragment,bundle)
 
