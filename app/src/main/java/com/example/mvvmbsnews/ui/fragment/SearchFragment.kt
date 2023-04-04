@@ -9,6 +9,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mvvmbsnews.R
 import com.example.mvvmbsnews.adapter.NewsAdapter
@@ -100,6 +101,19 @@ class SearchFragment : Fragment() {
             }
 
         })
+
+
+        newsAdapter.setOnNewsItemClickListener {
+
+            val bundle = Bundle().apply {
+                 putSerializable("article",it)
+            }
+
+            Log.v(TAG, "Article Pojo ->  ${it.toString()}")
+            findNavController().navigate(R.id.action_searchFragment_to_articleFragment,bundle)
+
+        }
+
 
     }
 
