@@ -54,6 +54,9 @@ class ArticleFragment : Fragment() {
 
         Log.v(TAG, "Args Article -> ${article.toString()}")
 
+        /**
+         * Merging code
+         */
         binding.webView.apply {
             webViewClient = CustomWebClient(binding.webViewProgressBar)
             article.url?.let { loadUrl(it) }
