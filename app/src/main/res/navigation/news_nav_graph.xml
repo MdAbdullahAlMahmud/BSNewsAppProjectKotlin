@@ -2,8 +2,9 @@
 <navigation
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/news_nav_graph"
-    app:startDestination="@id/breakingNewsFragment">
+    app:startDestination="@id/splashFragment">
 
     <fragment
         android:id="@+id/breakingNewsFragment"
@@ -52,5 +53,21 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"
             />
+    </fragment>
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.mvvmbsnews.ui.fragment.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_breakingNewsFragment"
+            app:destination="@id/breakingNewsFragment"
+
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>
