@@ -2,6 +2,7 @@ package com.example.mvvmbsnews.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
@@ -28,10 +29,29 @@ class NewsActivity : AppCompatActivity() {
 
 
 
+
+
         navController = findNavController(R.id.newsNavHostFragment)
         activityNewsBinding.bottomNavigationView.setupWithNavController(navController)
 
 
+        navController.addOnDestinationChangedListener { controller, destination, arguments ->
+            when (destination.id) {
+                R.id.splashFragment -> {
+                    activityNewsBinding.bottomNavigationView.visibility = View.GONE
+                    supportActionBar?.hide()
+
+
+
+                }
+
+                else -> {
+                    activityNewsBinding.bottomNavigationView.visibility = View.VISIBLE
+                    supportActionBar?.show()
+
+                }
+            }
+        }
 
 
 
