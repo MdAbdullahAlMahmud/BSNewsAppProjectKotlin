@@ -46,10 +46,13 @@ class ArticleFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
         val newsRepository =  NewsRepository(ArticleDatabase(binding.root.context))
         val providerFactory = NewsViewModelProviderFactory(newsRepository)
 
-        newsViewModel = ViewModelProvider(this,providerFactory).get(NewsViewModel::class.java)
+        newsViewModel = ViewModelProvider(this,providerFactory)[NewsViewModel::class.java]
+
         val article = args.article
 
         Log.v(TAG, "Args Article -> ${article.toString()}")
