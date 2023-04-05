@@ -41,7 +41,7 @@ class SplashFragment : Fragment() {
             findNavController().navigate(R.id.action_splashFragment_to_breakingNewsFragment)
 
         }else{
-            findNavController().navigate(R.id.action_splashFragment_to_breakingNewsFragment)
+            findNavController().navigate(R.id.action_splashFragment_to_onBoardFragment)
 
         }
 

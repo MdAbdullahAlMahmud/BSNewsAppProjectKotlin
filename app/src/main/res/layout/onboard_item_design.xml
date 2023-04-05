@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:id="@+id/onBoardItemImage"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:padding="45dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/onboarding_picture_three"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/onBoardItemTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="monospace"
+        android:text="Breaking News"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:padding="8dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/onBoardItemImage" />
+
+    <TextView
+        android:id="@+id/onBoardItemDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:fontFamily="monospace"
+        android:text="Breaking News ashfash asdhalsk asjhfkjash ashfjkhasfhaskj asfhasjkfhsafashfkajsh ahsfjkashfkj asfhjaslkfh asdsjalkfj asjfdsalkj asdjaslkj asfjaslkjf asjfslakf afljlskajf afsjslakfjaslfjfj "
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/onBoardItemTitle" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
