@@ -10,4 +10,6 @@
     <color name="primaryColor">#35BA6C</color>
     <color name="secondaryColor">#8BE8B2</color>
     <color name="redColor">#EA886F</color>
+    <color name="dotColor">#00C853</color>
+    <color name="strokeColor">#2C2B2B</color>
 </resources>

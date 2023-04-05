@@ -40,11 +40,12 @@ class NewsActivity : AppCompatActivity() {
                 R.id.splashFragment -> {
                     activityNewsBinding.bottomNavigationView.visibility = View.GONE
                     supportActionBar?.hide()
-
-
-
                 }
 
+                R.id.onBoardFragment ->{
+                    activityNewsBinding.bottomNavigationView.visibility = View.GONE
+                    supportActionBar?.hide()
+                }
                 else -> {
                     activityNewsBinding.bottomNavigationView.visibility = View.VISIBLE
                     supportActionBar?.show()
