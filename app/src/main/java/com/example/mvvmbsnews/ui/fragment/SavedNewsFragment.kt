@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -40,6 +41,15 @@ class SavedNewsFragment : Fragment () {
         newsViewModel = ViewModelProvider(this).get(NewsViewModel::class.java)
 
         newsViewModel.getAllArticle().observe(viewLifecycleOwner, Observer {articles->
+
+            if (articles.isEmpty()){
+
+                binding.emptyListIV.visibility= View.VISIBLE
+            }else{
+                binding.emptyListIV.visibility= View.GONE
+
+            }
+
             newsAdapter.differ.submitList(articles)
 
         })

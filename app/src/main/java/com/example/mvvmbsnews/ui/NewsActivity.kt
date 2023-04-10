@@ -21,8 +21,6 @@ class NewsActivity : AppCompatActivity() {
     lateinit var activityNewsBinding: ActivityNewsBinding
     lateinit var navController: NavController
 
-    lateinit var  viewModel : NewsViewModel
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activityNewsBinding = ActivityNewsBinding.inflate(layoutInflater)
@@ -54,11 +52,6 @@ class NewsActivity : AppCompatActivity() {
                 }
             }
         }
-
-
-
-
-
 
     }
 }
