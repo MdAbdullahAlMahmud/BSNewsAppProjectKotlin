@@ -15,20 +15,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mvvmbsnews.R
 import com.example.mvvmbsnews.adapter.NewsAdapter
-import com.example.mvvmbsnews.databinding.FragmentBreakingNewsBinding
 import com.example.mvvmbsnews.databinding.FragmentSearchNewsBinding
-import com.example.mvvmbsnews.db.ArticleDatabase
-import com.example.mvvmbsnews.repository.NewsRepository
-import com.example.mvvmbsnews.ui.NewsViewModelProviderFactory
 import com.example.mvvmbsnews.util.Constant
 import com.example.mvvmbsnews.util.Constant.Companion.SEARCH_NEWS_TIME_DELAY
 import com.example.mvvmbsnews.util.Resource
 import com.example.mvvmbsnews.viewmodel.NewsViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-
+@AndroidEntryPoint
 class SearchFragment : Fragment() {
 
 
@@ -53,11 +50,7 @@ class SearchFragment : Fragment() {
 
         setupRecycleView()
 
-
-        val newsRepository =  NewsRepository(ArticleDatabase(binding.root.context))
-        val providerFactory = NewsViewModelProviderFactory(newsRepository)
-
-        newsViewModel = ViewModelProvider(this,providerFactory).get(NewsViewModel::class.java)
+        newsViewModel = ViewModelProvider(this).get(NewsViewModel::class.java)
 
 
         var job: Job? = null

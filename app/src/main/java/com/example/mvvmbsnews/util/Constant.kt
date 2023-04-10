@@ -9,5 +9,8 @@ class Constant {
         val QUERY_PAGE_SIZE = 20
         val  ON_BOARD_SHARED_PREF_NAME = "onboard"
         val ON_BOARD_FINISHED_SHRED_KEY = "onBoardFinished"
+        val CONNECT_TIMEOUT = 1000L
+        val WRITE_TIMEOUT = 1000L
+        val READ_TIMEOUT = 3000L
     }
 }

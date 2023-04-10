@@ -5,24 +5,18 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.webkit.WebViewClient
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
-import androidx.viewpager.widget.ViewPager.OnPageChangeListener
-import com.example.mvvmbsnews.R
 import com.example.mvvmbsnews.databinding.FragmentArticleBinding
-import com.example.mvvmbsnews.databinding.FragmentBreakingNewsBinding
-import com.example.mvvmbsnews.db.ArticleDatabase
 import com.example.mvvmbsnews.model.Article
-import com.example.mvvmbsnews.repository.NewsRepository
-import com.example.mvvmbsnews.ui.NewsActivity
-import com.example.mvvmbsnews.ui.NewsViewModelProviderFactory
 import com.example.mvvmbsnews.util.CustomWebClient
 import com.example.mvvmbsnews.viewmodel.NewsViewModel
 import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ArticleFragment : Fragment() {
 
     lateinit var  binding: FragmentArticleBinding
@@ -33,6 +27,8 @@ class ArticleFragment : Fragment() {
 
     val TAG = "ArticleFragment"
     lateinit var newsViewModel : NewsViewModel
+
+
 
 
     override fun onCreateView(
@@ -48,10 +44,10 @@ class ArticleFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        val newsRepository =  NewsRepository(ArticleDatabase(binding.root.context))
-        val providerFactory = NewsViewModelProviderFactory(newsRepository)
+      /*  val newsRepository =  NewsRepository(ArticleDatabase(binding.root.context))
+        val providerFactory = NewsViewModelProviderFactory(newsRepository)*/
 
-        newsViewModel = ViewModelProvider(this,providerFactory)[NewsViewModel::class.java]
+        newsViewModel = ViewModelProvider(this)[NewsViewModel::class.java]
 
         val article = args.article
 

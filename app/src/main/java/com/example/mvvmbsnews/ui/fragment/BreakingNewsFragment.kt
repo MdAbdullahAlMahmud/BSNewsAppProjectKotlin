@@ -15,15 +15,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mvvmbsnews.R
 import com.example.mvvmbsnews.adapter.NewsAdapter
 import com.example.mvvmbsnews.databinding.FragmentBreakingNewsBinding
-import com.example.mvvmbsnews.db.ArticleDatabase
-import com.example.mvvmbsnews.repository.NewsRepository
-import com.example.mvvmbsnews.ui.NewsActivity
-import com.example.mvvmbsnews.ui.NewsViewModelProviderFactory
 import com.example.mvvmbsnews.util.Constant.Companion.QUERY_PAGE_SIZE
 import com.example.mvvmbsnews.util.Resource
 import com.example.mvvmbsnews.viewmodel.NewsViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class BreakingNewsFragment : Fragment() {
 
     lateinit var newsViewModel :NewsViewModel
@@ -47,13 +44,9 @@ class BreakingNewsFragment : Fragment() {
 
        setupRecycleView()
 
+        newsViewModel = ViewModelProvider(this)[NewsViewModel::class.java]
 
-        val newsRepository =  NewsRepository(ArticleDatabase(binding.root.context))
-        val providerFactory = NewsViewModelProviderFactory(newsRepository)
-
-        newsViewModel = ViewModelProvider(this,providerFactory).get(NewsViewModel::class.java)
-
-       newsViewModel.breakingNews.observe(viewLifecycleOwner, Observer {response->
+        newsViewModel.breakingNews.observe(viewLifecycleOwner, Observer {response->
            when(response){
 
                is  Resource.Success ->{
