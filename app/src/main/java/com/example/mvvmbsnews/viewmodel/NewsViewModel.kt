@@ -7,10 +7,13 @@ import com.example.mvvmbsnews.model.Article
 import com.example.mvvmbsnews.model.NewsResponse
 import com.example.mvvmbsnews.repository.NewsRepository
 import com.example.mvvmbsnews.util.Resource
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import retrofit2.Response
+import javax.inject.Inject
 
-class NewsViewModel (val  newsRepository: NewsRepository) : ViewModel() {
+@HiltViewModel
+class NewsViewModel @Inject constructor (val  newsRepository: NewsRepository) : ViewModel() {
 
 
     val breakingNews : MutableLiveData<Resource<NewsResponse>> = MutableLiveData()

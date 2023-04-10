@@ -13,8 +13,9 @@ import com.example.mvvmbsnews.databinding.ActivityNewsBinding
 import com.example.mvvmbsnews.db.ArticleDatabase
 import com.example.mvvmbsnews.repository.NewsRepository
 import com.example.mvvmbsnews.viewmodel.NewsViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class NewsActivity : AppCompatActivity() {
 
     lateinit var activityNewsBinding: ActivityNewsBinding

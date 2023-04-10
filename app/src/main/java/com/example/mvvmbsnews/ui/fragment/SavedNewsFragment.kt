@@ -10,16 +10,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mvvmbsnews.R
 import com.example.mvvmbsnews.adapter.NewsAdapter
-import com.example.mvvmbsnews.databinding.FragmentBreakingNewsBinding
 import com.example.mvvmbsnews.databinding.FragmentSavedNewsBinding
-import com.example.mvvmbsnews.db.ArticleDatabase
-import com.example.mvvmbsnews.repository.NewsRepository
-import com.example.mvvmbsnews.ui.NewsViewModelProviderFactory
 import com.example.mvvmbsnews.viewmodel.NewsViewModel
 import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SavedNewsFragment : Fragment () {
 
     lateinit var newsViewModel : NewsViewModel
@@ -40,11 +37,7 @@ class SavedNewsFragment : Fragment () {
         super.onViewCreated(view, savedInstanceState)
         setupRecycleView()
 
-
-        val newsRepository =  NewsRepository(ArticleDatabase(binding.root.context))
-        val providerFactory = NewsViewModelProviderFactory(newsRepository)
-
-        newsViewModel = ViewModelProvider(this,providerFactory).get(NewsViewModel::class.java)
+        newsViewModel = ViewModelProvider(this).get(NewsViewModel::class.java)
 
         newsViewModel.getAllArticle().observe(viewLifecycleOwner, Observer {articles->
             newsAdapter.differ.submitList(articles)
