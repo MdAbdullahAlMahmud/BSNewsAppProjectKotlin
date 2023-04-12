@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AbsListView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -18,7 +19,9 @@ import com.example.mvvmbsnews.databinding.FragmentBreakingNewsBinding
 import com.example.mvvmbsnews.util.Constant.Companion.QUERY_PAGE_SIZE
 import com.example.mvvmbsnews.util.Resource
 import com.example.mvvmbsnews.viewmodel.NewsViewModel
+import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class BreakingNewsFragment : Fragment() {
@@ -29,6 +32,9 @@ class BreakingNewsFragment : Fragment() {
     lateinit var binding: FragmentBreakingNewsBinding
 
     val TAG = "BreakingNewsFragment"
+
+    @Inject
+    lateinit var mAuth : FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -89,6 +95,11 @@ class BreakingNewsFragment : Fragment() {
             findNavController().navigate(R.id.action_breakingNewsFragment_to_articleFragment,bundle)
 
         }
+
+
+
+
+        //if (mAuth.currentUser!=null) Toast.makeText(context,"Available",Toast.LENGTH_SHORT).show()
 
 
     }

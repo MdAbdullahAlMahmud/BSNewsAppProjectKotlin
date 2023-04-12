@@ -1,19 +1,19 @@
 package com.example.mvvmbsnews.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Gravity
 import android.view.View
-import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
+import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.ActionBar
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.mvvmbsnews.R
 import com.example.mvvmbsnews.databinding.ActivityNewsBinding
-import com.example.mvvmbsnews.db.ArticleDatabase
-import com.example.mvvmbsnews.repository.NewsRepository
-import com.example.mvvmbsnews.viewmodel.NewsViewModel
 import dagger.hilt.android.AndroidEntryPoint
+
+
 
 @AndroidEntryPoint
 class NewsActivity : AppCompatActivity() {
@@ -25,7 +25,6 @@ class NewsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         activityNewsBinding = ActivityNewsBinding.inflate(layoutInflater)
         setContentView(activityNewsBinding.root)
-
 
 
 
