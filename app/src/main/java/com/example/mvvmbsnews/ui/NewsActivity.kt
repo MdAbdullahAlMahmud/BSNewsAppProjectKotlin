@@ -45,6 +45,10 @@ class NewsActivity : AppCompatActivity() {
                     activityNewsBinding.bottomNavigationView.visibility = View.GONE
                     supportActionBar?.hide()
                 }
+                R.id.authenticationFragment ->{
+                    activityNewsBinding.bottomNavigationView.visibility = View.GONE
+                    supportActionBar?.hide()
+                }
                 else -> {
                     activityNewsBinding.bottomNavigationView.visibility = View.VISIBLE
                     supportActionBar?.show()

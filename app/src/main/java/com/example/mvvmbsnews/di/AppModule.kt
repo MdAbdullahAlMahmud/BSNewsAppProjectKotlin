@@ -19,7 +19,6 @@ object AppModule {
     @Singleton
     @Provides
     fun providesAppDatabase(@ApplicationContext context: Context) : ArticleDatabase{
-
         return  ArticleDatabase.invoke(context)
     }
 
